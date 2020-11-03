@@ -54,7 +54,7 @@
     
     
 //「削除フォーム」
-    if (!empty($_POST["delete"])&& !empty($_POST["pass1"])) {//送信されたものがあり、中身が空でないときに以下の処理を行う。
+    if (!empty($_POST["delete"])&& !empty($_POST["pass1"])) {
         $pass1= $_POST["pass1"];
         if($pass1="delete"){ 	
             $id = $_POST["delete"];
@@ -66,7 +66,7 @@
     } 
 
 //「編集フォーム」（投稿フォームへ飛ばす）   
-    if (!empty($_POST["edit"])&& !empty($_POST["pass2"])) {//送信されたものがあり、中身が空でないときに以下の処理を行う。
+    if (!empty($_POST["edit"])&& !empty($_POST["pass2"])) {
         $pass2= $_POST["pass2"];
         if($pass2="edit"){
             $edit=$_POST["edit"];                                      
@@ -79,11 +79,11 @@
 【  投稿フォーム  】<br>
 名前：       <input type="text" name="name"  
 value="<?php 
-if(isset($edit)){$id = $edit ; //投稿表示機能のコードを範囲を狭めてぶちんこんだ（mission4-6補足参照）。改善の余地あり。
+if(isset($edit)){$id = $edit ; 
 $sql = 'SELECT * FROM ita WHERE id=:id ';
-$stmt = $pdo->prepare($sql);                  // ←差し替えるパラメータを含めて記述したSQLを準備し、
-$stmt->bindParam(':id', $id, PDO::PARAM_INT); // ←その差し替えるパラメータの値を指定してから、
-$stmt->execute();                             // ←SQLを実行する。
+$stmt = $pdo->prepare($sql);                  
+$stmt->bindParam(':id', $id, PDO::PARAM_INT); 
+$stmt->execute();                             
 $results = $stmt->fetchAll(); 
 	foreach ($results as $row){
 		echo $row['name'];
@@ -92,11 +92,11 @@ $results = $stmt->fetchAll();
 
 コメント：   <input type="text" name="comment"  
 value="<?php 
-if(isset($edit)){$id = $edit ; //投稿表示機能のコードを範囲を狭めてぶちんこんだ（mission4-6補足参照）。改善の余地あり。
+if(isset($edit)){$id = $edit ; 
 $sql = 'SELECT * FROM ita WHERE id=:id ';
-$stmt = $pdo->prepare($sql);                  // ←差し替えるパラメータを含めて記述したSQLを準備し、
-$stmt->bindParam(':id', $id, PDO::PARAM_INT); // ←その差し替えるパラメータの値を指定してから、
-$stmt->execute();                             // ←SQLを実行する。
+$stmt = $pdo->prepare($sql);                  
+$stmt->bindParam(':id', $id, PDO::PARAM_INT); 
+$stmt->execute();                             
 $results = $stmt->fetchAll(); 
 	foreach ($results as $row){
 		echo $row['comment'];
@@ -127,7 +127,7 @@ $results = $stmt->fetchAll();
 ～投稿一覧～<br>
 
 <?php
-    //データベースに書き込まれた全ての投稿をブラウザに表示
+    //表示
  $sql = 'SELECT * FROM ita';
 	$stmt = $pdo->query($sql);
 	$results = $stmt->fetchAll();
