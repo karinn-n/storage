@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>mission5-2</title>
+<title>ita</title>
 </head>
 <body>
 
@@ -20,10 +20,10 @@
 	." ("
 	. "id INT AUTO_INCREMENT PRIMARY KEY,"
 	. "name char(32),"
-    . "comment TEXT,"
-    . "datetime timestamp"//日付と時間はタイムスタンプ型
+        . "comment TEXT,"
+        . "datetime timestamp"//日付と時間はタイムスタンプ型
 	.");";
-	$stmt = $pdo->query($sql);
+    $stmt = $pdo->query($sql);
 
     
 //投稿フォーム
